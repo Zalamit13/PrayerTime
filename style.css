@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #012f50;
+    color: white;
+}
+
+.container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 50px 300px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.leftside {
+    grid-column: span 3; 
+    border: 1px solid black;
+    padding-left: 10px;
+}
+
+.rightside {
+    border: 1px solid red;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.bottomside {
+    padding: 50px;
+    grid-column: span 4;
+    /*grid-area: "bottom";*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    border: 1px solid blue;
+}
+
+/* Additional styling for better visibility */
+.container p {
+    padding: 10px;
+}
