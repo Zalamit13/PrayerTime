@@ -1,42 +1,188 @@
+/*--text: #ffffff;
+--background: #012f50;
+--primary: #208796;
+--secondary: #4fa097;
+--accent: #fcc201;*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:700|Rubik:400');
+
 body {
+    display: flex;
+    justify-content: center;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Rubik', sans-serif;
     background-color: #012f50;
     color: white;
+    font-weight: 400; /* Font weight for Rubik */
 }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('./Resources/islamic_bg_large.png');
+    background-size: cover;
+    background-repeat: repeat;
+    opacity: 0.5;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+html {
+    font-size: 100%;
+}
+h1 {
+    font-size: 4.210rem;
+}
+h2 {
+    font-size: 3.158rem;
+}
+h3 {
+    font-size: 2.369rem;
+}
+h4 {
+    font-size: 1.777rem;
+}
+h5 {
+    font-size: 1.333rem;
+}
+small {
+    font-size: 0.750rem;
+}
+
 
 .container {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(4, 1fr);
-    margin: 50px 300px;
-    border: 1px solid black;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 50px 30px;
     border-radius: 15px;
+    background-color: transparent;
 }
 
 .leftside {
-    grid-column: span 3; 
+    grid-column: span 2; 
     border: 1px solid black;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #208796;
+    border-radius: 15px;
+}
+.leftside h3 {
+    margin: 0;
+    padding: 10px;
+}
+
+.location-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 50px;
+    position: relative;
     padding-left: 10px;
 }
 
+.location-container h4, h5 {
+    margin: 0;
+}
+.location-icon {
+    width: 35px;
+    height: auto;
+    fill: #ffffff;
+    transition: fill 0.3s ease;
+}
+.location-icon:hover {
+    fill: #fcc201;
+}
+
+.dropbtn {
+    background-color: whitesmoke;
+    color: #012f50;
+    padding: 10px;
+    font-size: 1.333rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #4fa097;
+    color: white;
+    border: none;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.show {display:block;}
+
 .rightside {
-    border: 1px solid red;
     padding-right: 10px;
     padding-left: 10px;
+    background-color: #4fa097;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.rightside h4{
+    padding: 0px;
+    margin: 0px;
 }
 
 .bottomside {
-    padding: 50px;
-    grid-column: span 4;
-    /*grid-area: "bottom";*/
+    grid-column: span 3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 10px;
-    border: 1px solid blue;
+    gap: 5px;
+    background-color: #208796;
+    border-radius: 15px;
+    padding-bottom: 20px;
+}
+.bottomside time {
+    border-radius: 15px;
+    padding: 15px;
+    color: #012f50;
+    background-color: whitesmoke;
+}
+.bottomside h4 {
+    margin: 20px;
+}
+
+.prayer {
+    text-align: center;
+    gap: 5px;
 }
 
 /* Additional styling for better visibility */
-.container p {
-    padding: 10px;
-}
