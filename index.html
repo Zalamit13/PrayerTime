@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./stylescript.js"></script>
     <script src="./timescript.js"></script>
+    <script src="./stylescript.js"></script>
     <title>Prayer Time</title>
 </head>
 <body>
@@ -91,36 +91,45 @@
                     <option value="oran">Oran</option>
                 </select> -->
             </div>
-            <!-- <h5>عربي</h5> -->
+            <a href="" class="langSelector" onclick="toggleLanguage()">عربي</a></h5>
         </div>        
         <div class="rightside">
-            <h4 id="currentDate"></h4>
-            <h4 id="islamicDate"></h4>
-            <h4 id="currentTime"></h4>
-        </div>
+            <h4 id="currentDate" data-english="Today" data-arabic="اليوم"></h4>
+            <h4 id="islamicDate" data-english="Rabi' al-Awwal 7, 1445" data-arabic="ربيع الأول 7، 1445"></h4>
+            <h4 id="currentTime" data-english="Current Time" data-arabic="الوقت الحالي"></h4>
+        </div>        
         <div class="bottomside">
             <div class="prayer">
-                <h4>Sobh</h4>
-                <h4><time datetime="21:45">21:45</time></h4>
+                <h4 class="prayer-name p1">Fajr</h4>
+                <h4><time class="prayer-time t1" datetime="21:45">10:45</time></h4>
             </div>
             <div class="prayer">
-                <h4>Duhr</h4>
-                <h4><time datetime="21:45">21:45</time></h4>
+                <h4 class="prayer-name p2">Dhuhr</h4>
+                <h4><time class="prayer-time t2" datetime="21:45">20:45</time></h4>
             </div>
             <div class="prayer">
-                <h4>Asr</h4>
-                <h4><time datetime="21:45">21:45</time></h4>
+                <h4 class="prayer-name p3">Asr</h4>
+                <h4><time class="prayer-time t3" datetime="21:45">30:45</time></h4>
             </div>
             <div class="prayer">
-                <h4>Maghrib</h4>
-                <h4><time datetime="21:45">21:45</time></h4>
+                <h4 class="prayer-name p4">Maghrib</h4>
+                <h4><time class="prayer-time t4" datetime="21:45">40:45</time></h4>
             </div>
             <div class="prayer">
-                <h4>Isha</h4>
-                <h4><time datetime="21:45">21:45</time></h4>
+                <h4 class="prayer-name p5">Isha</h4>
+                <h4><time class="prayer-time t5" datetime="21:45">50:45</time></h4>
             </div>
         </div>
         
     </main>
+    <footer>
+        <p>Made with <span class="heart">❤</span> by Great Aymen Boukhal <span>🔻</span></p>
+        <a href="" class="kofibtn">
+            <img src="./Resources/kofiButton.svg" alt="Kofi Image">
+        </a>
+        <a href="" class="lnktrbtn">
+            <img src="./Resources/linktreeLinksButton.svg" alt="linktree image">
+        </a>
+    </footer>
 </body>
 </html>

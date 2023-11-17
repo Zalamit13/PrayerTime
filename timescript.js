@@ -17,6 +17,7 @@ function updateDateTime() {
     currentTimeElement.textContent = now.toLocaleTimeString('en-US', timeOptions);
 }
 
+
 // Update every second
 setInterval(updateDateTime, 1000);
 
