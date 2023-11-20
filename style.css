@@ -85,10 +85,11 @@ small {
 .location-container {
     display: flex;
     align-items: center;
-    justify-content: left;
+    /*justify-content: left;*/
     gap: 50px;
     position: relative;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .location-container h4, h5 {

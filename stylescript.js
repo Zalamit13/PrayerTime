@@ -1,3 +1,4 @@
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -16,6 +17,7 @@ window.onclick = function(event) {
       }
     }
   }
+  console.log('Showed the states');
 }
 
 function toggleLanguage(event) {
@@ -40,6 +42,54 @@ const translationMap = {
   'OR': 'أو',
   'Select Manually': 'تحديد الموقع',
   'عربي': 'English',
+  '1. Adrar': '١. أدرار',
+  '2. Chlef': '٢. الشلف',
+  '3. Laghouat': '٣. الأغواط',
+  '4. Oum El Bouaghi': '٤. أم البواقي',
+  '5. Batna': '٥. باتنة',
+  '6. Bejaia': '٦. بجاية',
+  '7. Biskra': '٧. بسكرة',
+  '8. Bechar': '٨. بشار',
+  '9. Blida': '٩. البليدة',
+  '10. Bouira': '١٠. البويرة',
+  '11. Tamanghasset': '١١. تمنغست',
+  '12. Tebessa': '١٢. تبسة',
+  '13. Tlemcen': '١٣. تلمسان',
+  '14. Tiaret': '١٤. تيارت',
+  '15. Tizi Ouzou': '١٥. تيزي وزو',
+  '16. Algiers': '١٦. الجزائر',
+  '17. Djelfa': '١٧. الجلفة',
+  '18. Jijel': '١٨. جيجل',
+  '19. Setif': '١٩. سطيف',
+  '20. Saida': '٢٠. سعيدة',
+  '21. Skikda': '٢١. سكيكدة',
+  '22. Sidi Bel Abbes': '٢٢. سيدي بلعباس',
+  '23. Annaba': '٢٣. عنابة',
+  '24. Guelma': '٢٤. قالمة',
+  '25. Constantine': '٢٥. قسنطينة',
+  '26. Medea': '٢٦. المدية',
+  '27. Mostaganem': '٢٧. مستغانم',
+  '28. M\'Sila': '٢٨. المسيلة',
+  '29. Mascara': '٢٩. معسكر',
+  '30. Ouargla': '٣٠. ورقلة',
+  '31. Oran': '٣١. وهران',
+  '32. El Bayadh': '٣٢. البيض',
+  '33. Illizi': '٣٣. إليزي',
+  '34. Bordj Bou Arreridj': '٣٤. برج بوعريريج',
+  '35. Boumerdes': '٣٥. بومرداس',
+  '36. El Tarf': '٣٦. الطارف',
+  '37. Tindouf': '٣٧. تندوف',
+  '38. Tissemsilt': '٣٨. تسمسيلت',
+  '39. El Oued': '٣٩. الوادي',
+  '40. Khenchela': '٤٠. خنشلة',
+  '41. Souk Ahras': '٤١. سوق أهراس',
+  '42. Tipaza': '٤٢. تيبازة',
+  '43. Mila': '٤٣. ميلة',
+  '44. Ain Defla': '٤٤. عين الدفلى',
+  '45. Naama': '٤٥. النعامة',
+  '46. Ain Temouchent': '٤٦. عين تموشنت',
+  '47. Ghardaia': '٤٧. غرداية',
+  '48. Relizane': '٤٨. غليزان',
   // Add more translations as needed
 };
 
@@ -49,7 +99,7 @@ function setArabicLanguage() {
   document.documentElement.lang = 'ar';
 
   // Your logic to change text to Arabic
-  document.querySelectorAll('.prayer-name').forEach(function(prayer) {
+  document.querySelectorAll('.prayer h4').forEach(function(prayer) {
       switch (prayer.textContent) {
           case 'Fajr':
               prayer.textContent = 'الصبح';
@@ -90,19 +140,19 @@ function setEnglishLanguage() {
   document.querySelectorAll('.prayer h4').forEach(function(prayer) {
       switch (prayer.textContent) {
           case 'الصبح':
-              prayer.textContent = 'Isha';
+              prayer.textContent = 'Fajr';
               break;
           case 'الظهر':
-              prayer.textContent = 'Maghrib';
+              prayer.textContent = 'Dhuhr';
               break;
           case 'العصر':
               prayer.textContent = 'Asr';
               break;
           case 'المغرب':
-              prayer.textContent = 'Dhuhr';
+              prayer.textContent = 'Maghrib';
               break;
           case 'العشاء':
-              prayer.textContent = 'Fajr';
+              prayer.textContent = 'Isha';
               break;
           default:
               // Handle any additional cases or languages
@@ -130,3 +180,36 @@ document.addEventListener('DOMContentLoaded', function() {
     setEnglishLanguage(); // Call the function to set English language
   }
 });
+
+import 'hijri-date';
+
+/*time functions*/
+function updateDateTime() {
+  const currentDateElement = document.getElementById("currentDate");
+  const islamicDateElement = document.getElementById("islamicDate");
+  const currentTimeElement = document.getElementById("currentTime");
+
+  const now = new Date();
+
+  // Update current date
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  currentDateElement.textContent = now.toLocaleDateString('en-US', options);
+
+ // Convert the current date to Hijri
+ const hijriDate = now.toHijri();
+
+ // Update Islamic date
+ islamicDateElement.textContent = `${hijriDate.getDate()} ${hijriDate.getMonthName()} ${hijriDate.getFullYear()}`;
+
+
+  // Update current time
+  const timeOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+  currentTimeElement.textContent = now.toLocaleTimeString('en-US', timeOptions);
+}
+
+
+// Update every second
+setInterval(updateDateTime, 1000);
+
+// Initial update
+updateDateTime();
