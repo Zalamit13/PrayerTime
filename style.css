@@ -58,9 +58,12 @@ small {
 
 
 .container {
-    display: grid;
+    display: flex;
+    justify-content: center;
+    /*display: grid;*/
     gap: 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    /*grid-template-columns: repeat(3, 1fr);*/
     margin: 50px 30px;
     border-radius: 15px;
     background-color: transparent;

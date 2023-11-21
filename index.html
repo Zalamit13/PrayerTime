@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css">   
+    <!-- <script type="module" src="./timescript.js"></script> -->
+    <script src="./stylescript.js"></script>   
     <title>Prayer Time</title>
 </head>
 <body>
@@ -74,11 +76,10 @@
             </div>
             <a href="" class="langSelector" onclick="toggleLanguage(event)">عربي</a>
         </div>        
-        <div class="rightside">
+        <!-- <div class="rightside">
             <h4 id="currentDate" data-english="Today" data-arabic="اليوم"></h4>
-            <h4 id="islamicDate" data-english="Rabi' al-Awwal 7, 1445" data-arabic="ربيع الأول 7، 1445"></h4>
             <h4 id="currentTime" data-english="Current Time" data-arabic="الوقت الحالي"></h4>
-        </div>        
+        </div>     -->   
         <div class="bottomside">
             <div class="prayer">
                 <h4 class="prayer-name p1">Fajr</h4>
@@ -105,13 +106,12 @@
     </main>
     <footer>
         <p>Made with <span class="heart">❤</span> by Great Aymen <span>🔻</span></p>
-        <a href="https://ko-fi.com/greataymen" class="kofibtn">
+        <a href="https://ko-fi.com/greataymen" class="kofibtn" target="_blank">
             <img src="./Resources/kofiButton.svg" alt="Kofi Image">
         </a>
-        <a href="https://linktr.ee/GreatDude" class="lnktrbtn">
+        <a href="https://linktr.ee/GreatDude" class="lnktrbtn" target="_blank">
             <img src="./Resources/linktreeLinksButton.svg" alt="linktree image">
         </a>
     </footer>
-    <script type="module" src="./stylescript.js"></script>
 </body>
 </html>

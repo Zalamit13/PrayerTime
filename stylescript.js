@@ -17,7 +17,7 @@ window.onclick = function(event) {
       }
     }
   }
-  console.log('Showed the states');
+  /*console.log('Showed the states');*/
 }
 
 function toggleLanguage(event) {
@@ -128,7 +128,7 @@ function setArabicLanguage() {
     }
   });
 
-  console.log('Switched to Arabic');
+  /*console.log('Switched to Arabic');*/
 }
 
 // Function to set the language to English
@@ -167,7 +167,7 @@ function setEnglishLanguage() {
       element.textContent = reversedMap[key];
     }
   });
-  console.log('Switched to English');
+  /*console.log('Switched to English');*/
 }
 
 
@@ -180,36 +180,3 @@ document.addEventListener('DOMContentLoaded', function() {
     setEnglishLanguage(); // Call the function to set English language
   }
 });
-
-import 'hijri-date';
-
-/*time functions*/
-function updateDateTime() {
-  const currentDateElement = document.getElementById("currentDate");
-  const islamicDateElement = document.getElementById("islamicDate");
-  const currentTimeElement = document.getElementById("currentTime");
-
-  const now = new Date();
-
-  // Update current date
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  currentDateElement.textContent = now.toLocaleDateString('en-US', options);
-
- // Convert the current date to Hijri
- const hijriDate = now.toHijri();
-
- // Update Islamic date
- islamicDateElement.textContent = `${hijriDate.getDate()} ${hijriDate.getMonthName()} ${hijriDate.getFullYear()}`;
-
-
-  // Update current time
-  const timeOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-  currentTimeElement.textContent = now.toLocaleTimeString('en-US', timeOptions);
-}
-
-
-// Update every second
-setInterval(updateDateTime, 1000);
-
-// Initial update
-updateDateTime();
