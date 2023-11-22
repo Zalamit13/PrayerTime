@@ -101,11 +101,16 @@ small {
 .location-icon {
     width: 35px;
     height: auto;
-    fill: #ffffff;
+    fill: #012f50;
     transition: fill 0.3s ease;
+    padding: 5px;
+    border-radius: 50px;
+    background-color: whitesmoke;
 }
 .location-icon:hover {
     fill: #fcc201;
+    cursor: pointer;
+    background-color: #4fa097;
 }
 
 .dropbtn {
@@ -181,9 +186,6 @@ small {
 }
 
 .bottomside {
-    /*grid-column: span 3;
-    display: grid;
-    /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -214,6 +216,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
     background-color: #4fa097;
     border-radius: 15px;
@@ -230,3 +233,46 @@ footer{
     width: 200px;
     height: auto;
 }
+
+
+/* screen adapting */
+@media screen and (max-width: 594px) and (max-height: 837px) {
+    body {
+      font-size: 14px; /* Make all text smaller */
+    }
+  
+    .location-container {
+      gap: 10px; /* Shorten the gap */
+      padding: 5px; /* Shorten the padding */
+    }
+  
+    .location-icon {
+      width: 25px; /* Make the location icon smaller */
+    }
+  
+    .dropbtn {
+      font-size: 1rem; /* Make the button text smaller */
+      padding: 8px; /* Shorten the button padding */
+    }
+  
+    .langSelector {
+      font-size: 1.5rem; /* Make the language selector text smaller */
+    }
+  
+    .bottomside time {
+      padding: 5px; /* Shorten the time element padding */
+    }
+    .bottomside .prayer{
+        padding: 5px;
+    }
+
+    footer {
+        padding: 5px; /* Shorten the padding */
+    }
+    
+    footer .lnktrbtn img{
+      width: 80px; /* Make the images smaller */
+      height: auto; /* Maintain aspect ratio */
+    }
+    /* Add more styles for smaller screens as needed */
+  }
