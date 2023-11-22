@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">   
     <!-- <script type="module" src="./timescript.js"></script> -->
-    <script src="./stylescript.js"></script>   
+    <script type="text/javascript" src="PrayTimes.js"></script>      
     <title>Prayer Time</title>
 </head>
 <body>
@@ -72,6 +72,7 @@
                         <a href="#" data-lat="32.4897" data-lon="3.6731">47. Ghardaia</a>
                         <a href="#" data-lat="35.7372" data-lon="0.5564">48. Relizane</a>
                     </div>
+                    
                 </div>
             </div>
             <a href="" class="langSelector" onclick="toggleLanguage(event)">عربي</a>
@@ -83,23 +84,23 @@
         <div class="bottomside">
             <div class="prayer">
                 <h4 class="prayer-name p1">Fajr</h4>
-                <h4><time class="prayer-time t1" datetime="21:45">10:45</time></h4>
+                <h4><time id="fajrTime" class="prayer-time t1" datetime="">01:00</time></h4>
             </div>
             <div class="prayer">
                 <h4 class="prayer-name p2">Dhuhr</h4>
-                <h4><time class="prayer-time t2" datetime="21:45">20:45</time></h4>
+                <h4><time id="dhuhrTime" class="prayer-time t2" datetime="">02:00</time></h4>
             </div>
             <div class="prayer">
                 <h4 class="prayer-name p3">Asr</h4>
-                <h4><time class="prayer-time t3" datetime="21:45">30:45</time></h4>
+                <h4><time id="asrTime" class="prayer-time t3" datetime="">03:00</time></h4>
             </div>
             <div class="prayer">
                 <h4 class="prayer-name p4">Maghrib</h4>
-                <h4><time class="prayer-time t4" datetime="21:45">40:45</time></h4>
+                <h4><time id="maghribTime" class="prayer-time t4" datetime="">04:00</time></h4>
             </div>
             <div class="prayer">
                 <h4 class="prayer-name p5">Isha</h4>
-                <h4><time class="prayer-time t5" datetime="21:45">50:45</time></h4>
+                <h4><time id="ishaTime" class="prayer-time t5" datetime="">05:00</time></h4>
             </div>
         </div>
         
@@ -113,5 +114,6 @@
             <img src="./Resources/linktreeLinksButton.svg" alt="linktree image">
         </a>
     </footer>
+    <script src="./stylescript.js"></script> 
 </body>
 </html>

@@ -180,3 +180,109 @@ document.addEventListener('DOMContentLoaded', function() {
     setEnglishLanguage(); // Call the function to set English language
   }
 });
+
+
+
+//Prayer times calculation and display
+// Function to get prayer times and update the UI
+function updatePrayerTimes() {
+  // Get the user's selected state coordinates
+  const selectedState = document.querySelector("#myDropdown a.active");
+
+  // Check if a state is selected
+  if (selectedState) {
+    const latitude = selectedState.getAttribute("data-lat");
+    const longitude = selectedState.getAttribute("data-lon");
+
+    // Log the selected state for debugging
+    console.log("Selected State:", selectedState.textContent, "Latitude:", latitude, "Longitude:", longitude);
+
+    // Set the calculation method to MWL (Muslim World League)
+    prayTimes.setMethod('MWL');
+
+    // Set the coordinates, timezone, and format
+    const coordinates = [parseFloat(latitude), parseFloat(longitude)];
+    const timezone = 1; // Algeria's timezone is GMT+1
+    const format = '24h';
+
+    // Get today's date
+    const today = new Date();
+
+    // Get prayer times for today
+    const prayerTimes = prayTimes.getTimes(today, coordinates, timezone, 0, format);
+
+    // Update the UI with the prayer times
+    updatePrayerElement("fajr", today, prayerTimes.fajr);
+    updatePrayerElement("dhuhr", today, prayerTimes.dhuhr);
+    updatePrayerElement("asr", today, prayerTimes.asr);
+    updatePrayerElement("maghrib", today, prayerTimes.maghrib);
+    updatePrayerElement("isha", today, prayerTimes.isha);
+  } else {
+    // Handle the case where no state is selected (you can set default coordinates or take other actions)
+    console.error("No state selected.");
+  }
+}
+
+// Add an event listener to the "Select Manually" button
+// document.querySelector(".dropbtn").addEventListener("click", updatePrayerTimes);
+const dropbtn = document.querySelector(".dropbtn");
+if (dropbtn) {
+  dropbtn.addEventListener("click", updatePrayerTimes);
+} else {
+  console.error("The element with class 'dropbtn' was not found.");
+}
+
+
+// Trigger the updatePrayerTimes function when a state is clicked
+const stateLinks = document.querySelectorAll("#myDropdown a");
+stateLinks.forEach(link => {
+  link.addEventListener("click", function() {
+    // Remove the "active" class from all links
+    stateLinks.forEach(link => link.classList.remove("active"));
+    // Add the "active" class to the clicked link
+    this.classList.add("active");
+    // Update prayer times
+    updatePrayerTimes();
+  });
+});
+
+// Function to update a specific prayer element with the new time
+function updatePrayerElement(prayerName, date, prayerTime) {
+  // Check if the prayer time is a valid time string
+  if (!prayerTime || typeof prayerTime !== 'string') {
+    console.error("Invalid prayer time:", prayerTime);
+    return;
+  }
+
+  // Convert the time string to a Date object (assuming the time is in HH:mm format)
+  const timeComponents = prayerTime.split(':');
+  const prayerDate = new Date(date);
+  prayerDate.setHours(parseInt(timeComponents[0], 10));
+  prayerDate.setMinutes(parseInt(timeComponents[1], 10));
+
+  // Format the prayer time for display
+  const formattedTime = formatPrayerTime(prayerDate);
+
+  // Update the datetime attribute
+  const prayerElement = document.getElementById(prayerName + "Time");
+  prayerElement.setAttribute("datetime", formattedTime);
+
+  // Update the displayed time
+  prayerElement.textContent = formattedTime;
+}
+
+// Function to format prayer time for display
+function formatPrayerTime(prayerTime) {
+  // Check if the prayer time is a valid date object
+  if (!(prayerTime instanceof Date) || isNaN(prayerTime.getTime())) {
+    console.error("Invalid prayer time:", prayerTime);
+    return "Invalid Time";
+  }
+
+  // Format the prayer time for display
+  const formattedTime = prayerTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  return formattedTime;
+}
+
+// Call the updatePrayerTimes function to initially update the UI
+updatePrayerTimes();

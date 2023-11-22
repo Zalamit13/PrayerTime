@@ -181,9 +181,12 @@ small {
 }
 
 .bottomside {
-    grid-column: span 3;
+    /*grid-column: span 3;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 5px;
     background-color: #208796;
     border-radius: 15px;
