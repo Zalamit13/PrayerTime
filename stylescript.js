@@ -102,7 +102,7 @@ function setArabicLanguage() {
   document.querySelectorAll('.prayer h4').forEach(function(prayer) {
       switch (prayer.textContent) {
           case 'Fajr':
-              prayer.textContent = 'الصبح';
+              prayer.textContent = 'الفجر';
               break;
           case 'Dhuhr':
               prayer.textContent = 'الظهر';
@@ -139,7 +139,7 @@ function setEnglishLanguage() {
   // Your logic to change text to English
   document.querySelectorAll('.prayer h4').forEach(function(prayer) {
       switch (prayer.textContent) {
-          case 'الصبح':
+          case 'الفجر':
               prayer.textContent = 'Fajr';
               break;
           case 'الظهر':
@@ -233,6 +233,8 @@ function setAutoLocationAllowed(allowed) {
 
 // Function to update prayer times with coordinates
 function updatePrayerWithCoordinates(latitude, longitude) {
+  console.log('Updating prayer times with coordinates:', latitude, longitude);
+
   // Set the calculation method to MWL (Muslim World League)
   prayTimes.setMethod('MWL');
 
@@ -247,19 +249,37 @@ function updatePrayerWithCoordinates(latitude, longitude) {
   // Get prayer times for today
   const prayerTimes = prayTimes.getTimes(today, coordinates, timezone, 0, format);
 
-  // Update the UI with the prayer times
-  updatePrayerElement("fajr", today, prayerTimes.fajr);
-  updatePrayerElement("dhuhr", today, prayerTimes.dhuhr);
-  updatePrayerElement("asr", today, prayerTimes.asr);
-  updatePrayerElement("maghrib", today, prayerTimes.maghrib);
-  updatePrayerElement("isha", today, prayerTimes.isha);
+  // Log the obtained prayer times
+  console.log('Prayer Times:', prayerTimes);
+
+  // Check if the obtained prayer times are valid
+  if (prayerTimes && typeof prayerTimes === 'object') {
+    // Log a success message
+    console.log('Prayer times obtained successfully.');
+
+    // Update the UI with the prayer times
+    updatePrayerElement("fajr", today, prayerTimes.fajr);
+    updatePrayerElement("dhuhr", today, prayerTimes.dhuhr);
+    updatePrayerElement("asr", today, prayerTimes.asr);
+    updatePrayerElement("maghrib", today, prayerTimes.maghrib);
+    updatePrayerElement("isha", today, prayerTimes.isha);
+  } else {
+    // Log an error if the obtained prayer times are not valid
+    console.error('Invalid prayer times:', prayerTimes);
+  }
+}
+
+// Function to check if auto-location is allowed
+function isAutoLocationAllowed() {
+  const allowedValue = localStorage.getItem("autoLocationAllowed");
+  console.log("Auto Location Allowed (from localStorage):", allowedValue);
+  return allowedValue && allowedValue === "true";
 }
 
 // Function to get prayer times and update the UI
 function updatePrayerTimes() {
   // Check if the user has clicked the location icon
-  const autoLocationAllowed = setAutoLocationAllowed();
-  console.log("Auto Location Allowed (from localStorage):", localStorage.getItem("autoLocationAllowed"));
+  const autoLocationAllowed = isAutoLocationAllowed();
 
   if (autoLocationAllowed) {
     // Attempt auto-location using geolocation
@@ -277,12 +297,10 @@ function updatePrayerTimes() {
         },
         (error) => {
           console.error("Error getting location:", error);
-          alert("Error getting location. Please check your browser settings.");
         }
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
-      alert("Geolocation is not supported by this browser.");
     }
   } else {
     // User has clicked the location icon, use manually selected state
@@ -302,6 +320,8 @@ function updatePrayerTimes() {
     }
   }
 }
+
+
 
 // Trigger the updatePrayerTimes function when a state is clicked
 const stateLinks = document.querySelectorAll("#myDropdown a");
@@ -337,37 +357,30 @@ updatePrayerTimes();
 
 
 // location icon
-/*document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const locationIcon = document.getElementById('locationIcon');
 
   if (locationIcon) {
-      locationIcon.addEventListener('click', () => {
-          // Request location permission
-          if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(
-                  (position) => {
-                      // Location permission granted
-                      console.log('Location permission granted:', position.coords.latitude, position.coords.longitude);
-                      // Call your function to update prayer times with the obtained coordinates
-                      updatePrayerTimes(position.coords.latitude, position.coords.longitude);
-                  },
-                  (error) => {
-                      // Location permission denied or error occurred
-                      console.error('Error getting location:', error.message);
-                      // Handle the case where the user denies location permission or an error occurs
-                  }
-              );
-          } else {
-              console.error('Geolocation is not supported by your browser.');
-              // Handle the case where Geolocation is not supported
+    locationIcon.addEventListener('click', () => {
+      // Request location permission
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            // Location permission granted
+            console.log('Location permission granted:', position.coords.latitude, position.coords.longitude);
+            // Call your function to update prayer times with the obtained coordinates
+            updatePrayerWithCoordinates(position.coords.latitude, position.coords.longitude);
+          },
+          (error) => {
+            // Location permission denied or error occurred
+            console.error('Error getting location:', error.message);
+            // Handle the case where the user denies location permission or an error occurs
           }
-      });
+        );
+      } else {
+        console.error('Geolocation is not supported by your browser.');
+        // Handle the case where Geolocation is not supported
+      }
+    });
   }
-
-  // Function to update prayer times with specific coordinates
-  function updatePrayerTimes(latitude, longitude) {
-      // Your logic to update prayer times with the obtained coordinates
-      console.log('Updating prayer times with coordinates:', latitude, longitude);
-      // Example: prayTimes.setTimes(latitude, longitude);
-  }
-});*/
+});
