@@ -157,16 +157,21 @@ small {
 
 .langSelector {
     font-family: "Baloo Bhaijaan 2", sans-serif;
+    font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: whitesmoke;
+    background-color: #012f50;
     font-size: 1.7rem;
     padding-left: 10px;
-    /*border: 1px solid black;*/
+    padding-right: 10px;
+    border-radius: 15px;
     margin-right: auto;
+    transition: 0.3s ease;
 }
 .langSelector:hover {
     text-decoration: none;
-    color: #fcc201;
+    color: whitesmoke;
+    background-color: #14CC58;
 }
 
 .rightside {
@@ -239,6 +244,9 @@ footer{
 @media screen and (max-width: 594px) and (max-height: 837px) {
     body {
       font-size: 14px; /* Make all text smaller */
+    }
+    body::before {
+        background-image: none;
     }
   
     .location-container {
