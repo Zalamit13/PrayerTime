@@ -266,6 +266,9 @@ footer{
     .langSelector {
       font-size: 1.5rem; /* Make the language selector text smaller */
     }
+    .langSelector:hover {
+        background-color: #012f50;
+    }
   
     .bottomside time {
       padding: 5px; /* Shorten the time element padding */
