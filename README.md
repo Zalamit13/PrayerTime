@@ -1,4 +1,4 @@
-# Algeria Prayer Time
+# Algeria Prayer Times
 A website that displays prayer times in Algeria based on its states.
 
 ![Desktop version 1](https://github.com/Zalamit13/PrayerTime/blob/main/Resources/prayertimes%20desktop%20version.png?raw=true)
