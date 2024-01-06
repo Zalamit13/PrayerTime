@@ -246,9 +246,6 @@ footer{
     body {
       font-size: 14px; /* Make all text smaller */
     }
-    body::before {
-        background-image: none;
-    }
   
     .location-container {
       gap: 10px; /* Shorten the gap */
